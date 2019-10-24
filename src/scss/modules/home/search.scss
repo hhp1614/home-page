@@ -1,0 +1,59 @@
+@import "../../config";
+
+.home-search {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  input {
+    padding: 0.06rem 0.252rem 0.06rem 0.07rem;
+    width: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    font-size: $fontNormal;
+    line-height: 0.1rem;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
+    transition: all 0.25s;
+
+    &::placeholder {
+      color: #ffffff;
+      transition: all 0.25s;
+    }
+
+    &:hover {
+      width: 2.5rem;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+
+      &::placeholder {
+        color: #666666;
+      }
+    }
+
+    &:focus {
+      width: 2.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.06rem 0.07rem;
+    font-size: $fontNormal;
+    line-height: 0.1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+  }
+}

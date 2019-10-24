@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div ref="home" class="home" :style="{backgroundImage: `url(${bg})`}">
+    <div class="home-cover"
+         :class="{active: glass}"
+         :style="{backgroundImage: glass ? `url(${bg})` : ''}"
+    ></div>
+    <div class="container">
+      <Time @click.native="toggleMenu"/>
+      <Search @toggleGlass="toggleGlass"/>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Time from '../components/home/Time';
+import Search from '../components/home/Search';
+
+import bgDefault from '../assets/bg_default.jpg';
 
 export default {
-  name: "home",
-  components: {
-    HelloWorld
+  data() {
+    return {
+      bg: bgDefault,
+      glass: false
+    };
+  },
+  components: { Time, Search },
+  methods: {
+    toggleMenu() {
+      console.log('toggleMenu');
+    },
+    toggleGlass() {
+      this.glass = !this.glass;
+    }
   }
 };
 </script>
