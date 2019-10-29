@@ -1,13 +1,34 @@
+// 容器撑满全屏
 html, body, #app {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
+// 全局字体
 body {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
 }
 
+// 使用标准盒模型
 * {
   box-sizing: border-box;
+}
+
+// 标签默认样式
+button, input, textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+// 撑满全屏
+.full-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

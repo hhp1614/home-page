@@ -1,0 +1,52 @@
+@import "../../config";
+
+// 主页菜单
+.home-menu {
+  @extend .full-screen;
+  opacity: 0;
+  z-index: -1;
+  transition: $defaultTransition;
+
+  // 显示
+  &.show {
+    opacity: 1;
+    z-index: 10;
+  }
+
+  // 用于点击空白处关闭菜单页
+  &-cover {
+    @extend .full-screen;
+    z-index: 1;
+  }
+
+  // 菜单页内容容器
+  &-main {
+    @extend .full-screen;
+    height: 0;
+    z-index: 10;
+
+    // 右上角按钮
+    &-config {
+      position: absolute;
+      top: 0.15rem;
+      right: 0.15rem;
+
+      button {
+        margin-right: 0.05rem;
+        color: #ffffff;
+        font-size: $fontMedium;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.35);
+        transition: $defaultTransition;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.65);
+        }
+      }
+    }
+  }
+}

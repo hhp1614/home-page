@@ -1,12 +1,14 @@
 <template>
-  <div ref="home" class="home" :style="{backgroundImage: `url(${bg})`}">
+  <div ref="home" class="home">
     <div class="home-cover"
          :class="{active: glass}"
-         :style="{backgroundImage: glass ? `url(${bg})` : ''}"
+         :style="{backgroundImage: `url(${bg})`}"
     ></div>
-    <div class="container">
+    <div class="home-mask"></div>
+    <div class="home-container">
       <Time @click.native="toggleMenu"/>
-      <Search @toggleGlass="toggleGlass"/>
+      <Search :class="{show: searchShow}" @toggleGlass="toggleGlass"/>
+      <Menu :class="{show: !searchShow}" @closeMenu="toggleMenu"/>
     </div>
   </div>
 </template>
@@ -14,6 +16,7 @@
 <script>
 import Time from '../components/home/Time';
 import Search from '../components/home/Search';
+import Menu from '../components/home/Menu';
 
 import bgDefault from '../assets/bg_default.jpg';
 
@@ -21,16 +24,18 @@ export default {
   data() {
     return {
       bg: bgDefault,
-      glass: false
+      glass: false,
+      searchShow: true
     };
   },
-  components: { Time, Search },
+  components: { Time, Search, Menu },
   methods: {
     toggleMenu() {
-      console.log('toggleMenu');
-    },
-    toggleGlass() {
       this.glass = !this.glass;
+      this.searchShow = !this.searchShow;
+    },
+    toggleGlass(glass) {
+      this.glass = glass;
     }
   }
 };

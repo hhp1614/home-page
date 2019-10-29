@@ -1,15 +1,38 @@
 <template>
-  <div class="home-search">
-    <input type="text" placeholder="Search" @focus="toggleGlass">
-    <button>🔍</button>
+  <div class="home-search" :class="searchClass">
+    <input v-model="searchContext"
+           type="text"
+           placeholder="Search"
+           @input="searchInput"
+           @focus="searchFocus"
+           @blur="searchBlur"
+    >
   </div>
 </template>
 
 <script>
+let timer = null;
+
 export default {
+  data() {
+    return {
+      searchClass: '',
+      searchContext: ''
+    };
+  },
   methods: {
-    toggleGlass() {
-      this.$emit('toggleGlass');
+    searchInput() {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        console.log(this.searchContext);
+      }, 200);
+    },
+    searchFocus() {
+      this.$emit('toggleGlass', true);
+    },
+    searchBlur() {
+      this.searchContext = '';
+      this.$emit('toggleGlass', false);
     }
   }
 };
