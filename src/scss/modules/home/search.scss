@@ -24,7 +24,7 @@
     font-size: $fontNormal;
     line-height: 0.1rem;
     background: rgba(255, 255, 255, 0.25);
-    box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
+    box-shadow: $defaultBoxShadow;
     transition: all 0.25s;
 
     // 占位符
@@ -37,7 +37,7 @@
       width: 2.5rem;
       padding: 0.06rem 0.07rem;
       background: rgba(255, 255, 255, 0.6);
-      box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+      box-shadow: $defaultBoxShadowHover;
 
       &::placeholder {
         color: #666666;
@@ -48,7 +48,7 @@
       width: 2.5rem;
       padding: 0.06rem 0.07rem;
       background: rgba(255, 255, 255, 0.9);
-      box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px;
+      box-shadow: $defaultBoxShadow;
 
       // focus 状态的占位符
       &::placeholder {

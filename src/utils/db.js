@@ -2,9 +2,21 @@
 const defaultPrefix = `_hhp_`;
 
 /**
+ * 转换为大写
+ * @param key 存储的 key
+ * @return {string} 转换后的 key
+ */
+const upCase = key => key.toLocaleUpperCase();
+
+/**
  * 父类：本地存储 DB
  */
 class DB {
+  /**
+   * DB 构造函数
+   * @param storage 存储类型 localStorage|sessionStorage
+   * @param prefix {string} 前缀
+   */
   constructor(storage, prefix = defaultPrefix) {
     if (storage !== localStorage || storage !== sessionStorage) {
       throw Error('It is not a localStorage or sessionStorage');
@@ -23,7 +35,7 @@ class DB {
    */
   set(key, value) {
     try {
-      this.db.setItem(this.prefix + key, JSON.stringify(value));
+      this.db.setItem(upCase(this.prefix + key), JSON.stringify(value));
       return true;
     } catch (e) {
       return false;
@@ -37,7 +49,7 @@ class DB {
    */
   get(key) {
     try {
-      return JSON.parse(this.db.getItem(this.prefix + key));
+      return JSON.parse(this.db.getItem(upCase(this.prefix + key)));
     } catch (e) {
       return null;
     }
@@ -48,7 +60,7 @@ class DB {
    * @param key {string} item 的 key
    */
   remove(key) {
-    this.db.removeItem(this.prefix + key);
+    this.db.removeItem(upCase(this.prefix + key));
   }
 
   /**

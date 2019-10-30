@@ -11,7 +11,7 @@
 </template>
 
 <script>
-let timer = null;
+import { debounce } from '../../utils/helper';
 
 export default {
   data() {
@@ -22,10 +22,7 @@ export default {
   },
   methods: {
     searchInput() {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        console.log(this.searchContext);
-      }, 200);
+      debounce(() => console.log(this.searchContext));
     },
     searchFocus() {
       this.$emit('toggleGlass', true);

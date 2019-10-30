@@ -14,19 +14,19 @@
   }
 
   // 用于点击空白处关闭菜单页
-  &-cover {
+  .cover {
     @extend .full-screen;
     z-index: 1;
   }
 
   // 菜单页内容容器
-  &-main {
+  .main {
     @extend .full-screen;
     height: 0;
     z-index: 10;
 
     // 右上角按钮
-    &-config {
+    .config {
       position: absolute;
       top: 0.15rem;
       right: 0.15rem;
@@ -45,6 +45,47 @@
 
         &:hover {
           color: rgba(255, 255, 255, 0.65);
+        }
+      }
+    }
+
+    // 便笺
+    .note {
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      $noteWidth: 3.1rem;
+
+      .content {
+        textarea {
+          padding: 0.05rem;
+          margin-bottom: 0.05rem;
+          width: $noteWidth;
+          height: 0.9rem;
+          background: rgba(255, 255, 255, 0.6);
+          border-radius: 0.075rem;
+          font-size: $fontSmall;
+          resize: none;
+          box-shadow: $defaultBoxShadow;
+
+          &::placeholder {
+            transition: $defaultTransition;
+          }
+
+          &:hover::placeholder {
+            color: #333333;
+          }
+        }
+      }
+
+      .list {
+        display: flex;
+        width: $noteWidth;
+
+        .item {
+          padding: 0.05rem;
+          width: $noteWidth / 3;
         }
       }
     }
