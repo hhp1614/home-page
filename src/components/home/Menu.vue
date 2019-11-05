@@ -10,30 +10,76 @@
       </div>
       <div class="note">
         <div class="content">
-          <textarea placeholder="在此键入以创建新的便笺"></textarea>
+          <textarea
+                  ref="content"
+                  placeholder="在此键入以创建新的便笺"
+                  v-model="noteContent"
+                  @input="contentChange"
+          ></textarea>
         </div>
-        <div class="list">
-          <div class="item">
-            <div class="title">123123</div>
-            <div class="time">2019-10-30</div>
-            <div class="action">
-              <button class="del"></button>
-              <button class="pin"></button>
-            </div>
-          </div>
-          <div class="item">
-            <div class="title">123123</div>
-            <div class="time">2019-10-30</div>
-          </div>
-        </div>
+        <NoteList/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+import { debounce } from '../../utils/helper';
+import NoteList from './NoteList';
+
 export default {
+  filters: {
+    filterTitle(val) {
+      return val.split('\n')[0];
+    }
+  },
+  components: { NoteList },
+  computed: {
+    ...mapState(['noteList', 'noteContentIndex']),
+    noteContent: {
+      get() {
+        return this.$store.state.noteContent;
+      },
+      set(v) {
+        this.$store.state.noteContent = v;
+      }
+    }
+  },
   methods: {
+    ...mapActions(['UpdateNoteList', 'UpdateNoteContent', 'UpdateNoteContentIndex']),
+    // 输入便签内容
+    contentChange() {
+      debounce(() => {
+        const list = this.noteList;
+        const index = this.noteContentIndex;
+        console.log(index);
+        if (index !== '') {
+          list[index].title = this.noteContent;
+          this.UpdateNoteList(list);
+        } else {
+          // list.push({
+          //   title: this.noteContent,
+          //   time: this.getTime(),
+          //   pin: false
+          // });
+          // this.UpdateNoteList(list).then(() => {
+          //   this.UpdateNoteContentIndex(this.noteList.length - 1);
+          // });
+        }
+      });
+    },
+    // 获取时间
+    getTime() {
+      const d = new Date();
+      const year = d.getFullYear();
+      const month = d.getMonth() + 1;
+      const date = d.getDate();
+      const hour = d.getHours();
+      const minute = d.getMinutes();
+      return `${year}年${month}月${date}日 ${hour}:${minute}`;
+    },
+    // 关闭菜单
     closeMenu() {
       this.$emit('closeMenu');
     }

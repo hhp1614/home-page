@@ -24,6 +24,25 @@ button, input, textarea {
   padding: 0;
 }
 
+// 控制整个滚动条
+::-webkit-scrollbar {
+  background: transparent;
+  width: 6px;
+  height: 6px;
+}
+
+// 滚动条两端方向按钮
+::-webkit-scrollbar-button {
+  width: 6px;
+  height: 6px;
+}
+
+// 滚动条中间滑动部分
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
 // 撑满全屏
 .full-screen {
   position: absolute;

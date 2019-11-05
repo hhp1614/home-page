@@ -3,7 +3,7 @@
 // 主页搜索
 .home-search {
   position: absolute;
-  top: 1rem;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   transition: $defaultTransition;
@@ -18,11 +18,11 @@
 
   // 搜索框
   input {
-    padding: 0.06rem 0.23rem 0.06rem 0.07rem;
-    width: 1rem;
-    border-radius: 0.3rem;
+    padding: 12px 46px 12px 14px;
+    width: 200px;
+    border-radius: 60px;
     font-size: $fontNormal;
-    line-height: 0.1rem;
+    line-height: 20px;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: $defaultBoxShadow;
     transition: all 0.25s;
@@ -34,8 +34,8 @@
     }
 
     &:hover {
-      width: 2.5rem;
-      padding: 0.06rem 0.07rem;
+      width: 500px;
+      padding: 12px 14px;
       background: rgba(255, 255, 255, 0.6);
       box-shadow: $defaultBoxShadowHover;
 
@@ -45,8 +45,8 @@
     }
 
     &:focus {
-      width: 2.5rem;
-      padding: 0.06rem 0.07rem;
+      width: 500px;
+      padding: 12px 14px;
       background: rgba(255, 255, 255, 0.9);
       box-shadow: $defaultBoxShadow;
 

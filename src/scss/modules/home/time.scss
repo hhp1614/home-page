@@ -8,9 +8,9 @@ $darkColor: #b0b0b0;
 // 主页时间组件
 .home-time {
   position: absolute;
-  top: 0.7rem;
+  top: 140px;
   left: 50%;
-  padding: 0 0.05rem;
+  padding: 0 10px;
   color: #ffffff;
   font-size: $fontBig;
   line-height: 1;
@@ -36,7 +36,7 @@ $darkColor: #b0b0b0;
     content: "";
     position: absolute;
     left: 50%;
-    bottom: -0.03rem;
+    bottom: -6px;
     display: block;
     width: 0;
     height: 2px;
@@ -51,7 +51,7 @@ $darkColor: #b0b0b0;
 
   // 左侧部分
   .left {
-    margin-right: 0.05rem;
+    margin-right: 10px;
     display: inline-block;
     line-height: 1.2;
     font-size: $fontSmall;

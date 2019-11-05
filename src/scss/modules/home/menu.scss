@@ -28,11 +28,11 @@
     // 右上角按钮
     .config {
       position: absolute;
-      top: 0.15rem;
-      right: 0.15rem;
+      top: 30px;
+      right: 30px;
 
       button {
-        margin-right: 0.05rem;
+        margin-right: 10px;
         color: #ffffff;
         font-size: $fontMedium;
         cursor: pointer;
@@ -52,19 +52,20 @@
     // 便笺
     .note {
       position: absolute;
-      top: 1rem;
+      top: 200px;
       left: 50%;
       transform: translateX(-50%);
-      $noteWidth: 3.1rem;
+      $noteWidth: 620px;
 
+      // 便笺内容
       .content {
         textarea {
-          padding: 0.05rem;
-          margin-bottom: 0.05rem;
+          padding: 10px;
+          margin-bottom: 10px;
           width: $noteWidth;
-          height: 0.9rem;
+          height: 180px;
           background: rgba(255, 255, 255, 0.6);
-          border-radius: 0.075rem;
+          border-radius: 15px;
           font-size: $fontSmall;
           resize: none;
           box-shadow: $defaultBoxShadow;
@@ -79,13 +80,96 @@
         }
       }
 
+      // 便笺列表
       .list {
         display: flex;
+        flex-wrap: wrap;
         width: $noteWidth;
 
+        // 列表项
         .item {
-          padding: 0.05rem;
-          width: $noteWidth / 3;
+          margin: 5px;
+          padding: 10px;
+          width: $noteWidth / 3 - 10;
+          font-size: $fontSmall;
+          line-height: 1.6;
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.1);
+          transition: $defaultTransition;
+          box-shadow: $defaultBoxShadow;
+          cursor: pointer;
+
+          // 标题
+          .title {
+            color: rgba(255, 255, 255, 0.9);
+            // 单行文本溢出显示省略号
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          // 时间
+          .time {
+            color: rgba(255, 255, 255, 0.3);
+          }
+
+          // 操作
+          .action {
+            display: flex;
+            margin-top: 5px;
+
+            button {
+              flex: 1;
+              padding: 5px;
+              margin-right: 10px;
+              color: rgba(0, 0, 0, 0.3);
+              cursor: pointer;
+              transition: $defaultTransition;
+              border-radius: 3px;
+
+              &:last-child {
+                margin-right: 0;
+              }
+
+              &:hover {
+                background: rgba(0, 0, 0, 0.2);
+              }
+            }
+
+            // 固定按钮
+            .pin:hover, .pin.active {
+              color: rgba(173, 255, 47, 0.8);
+            }
+
+            // 删除按钮
+            .del:hover, .del.active {
+              color: rgba(255, 0, 0, 0.8);
+            }
+          }
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: $defaultBoxShadowHover;
+          }
+
+          // 添加按钮
+          .add {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            color: rgba(0, 0, 0, 0.3);
+            transition: $defaultTransition;
+
+            i {
+              font-size: $fontBig;
+            }
+
+            &:hover {
+              color: rgba(0, 0, 0, 0.5);
+            }
+          }
         }
       }
     }

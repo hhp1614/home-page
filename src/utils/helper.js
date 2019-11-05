@@ -5,9 +5,7 @@ let timeout = null; // 防抖函数定时器
  * @param wait {number} 等待时间
  * @return {Function} 闭包
  */
-export const debounce = (func, wait = 160) => {
+export function debounce(func, wait = 120) {
   clearTimeout(timeout);
-  timeout = setTimeout(() => {
-    func();
-  }, wait);
-};
+  timeout = setTimeout(() => func(), wait);
+}
