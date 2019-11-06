@@ -98,10 +98,12 @@
           transition: $defaultTransition;
           box-shadow: $defaultBoxShadow;
           cursor: pointer;
+          user-select: none;
 
           // 标题
           .title {
             color: rgba(255, 255, 255, 0.9);
+            font-size: $fontSmall + 1;
             // 单行文本溢出显示省略号
             overflow: hidden;
             text-overflow: ellipsis;
@@ -142,7 +144,7 @@
             }
 
             // 删除按钮
-            .del:hover, .del.active {
+            .del:hover {
               color: rgba(255, 0, 0, 0.8);
             }
           }

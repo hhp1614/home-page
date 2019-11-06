@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as types from './mutationTypes';
+import { db } from '../utils/db';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    noteList: [],
+    noteList: db.ls.get('note_list') || [],
     noteContent: '',
     noteContentIndex: ''
   },
@@ -18,14 +19,15 @@ export default new Vuex.Store({
       state.noteContent = noteContent;
     },
     [types.CONTENT_INDEX](state, noteContentIndex) {
-      state.contentIndex = noteContentIndex;
+      state.noteContentIndex = noteContentIndex;
     }
   },
   actions: {
     UpdateNoteList({ commit }, noteList) {
+      db.ls.set('note_list', noteList);
       commit(types.NOTE_LIST, noteList);
     },
-    UpdateNoteContent({commit}, noteContent) {
+    UpdateNoteContent({ commit }, noteContent) {
       commit(types.NOTE_CONTENT, noteContent);
     },
     UpdateNoteContentIndex({ commit }, noteContentIndex) {

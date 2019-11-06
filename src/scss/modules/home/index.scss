@@ -33,4 +33,70 @@
     @extend .full-screen;
     background-color: rgba(0, 0, 0, 0.3);
   }
+
+  // 固定便笺列表
+  .note-list-pin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 250px;
+    max-height: 100%;
+    padding: 20px;
+
+    // 列表项
+    .item {
+      position: relative;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.8);
+      line-height: 1.4;
+      font-size: $fontSmall;
+
+      // 标题
+      .title {
+        font-size: $fontSmall + 1;
+        cursor: pointer;
+        transition: $defaultTransition;
+        user-select: none;
+        // 单行文本溢出显示省略号
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:hover {
+          color: rgba(10, 103, 0, 0.8);
+        }
+      }
+
+      // 时间
+      .time {
+        color: rgba(0, 0, 0, 0.35);
+      }
+
+      // 取消固定
+      .unpin {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: $defaultTransition;
+
+        &:hover {
+          color: rgba(255, 0, 0, 0.8);
+        }
+      }
+
+      &:hover .unpin {
+        opacity: 1;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

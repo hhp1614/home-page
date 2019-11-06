@@ -8,15 +8,18 @@
         <!--设置-->
         <button class="iconfont icon-setting"></button>
       </div>
+      <!--便笺-->
       <div class="note">
+        <!--输入-->
         <div class="content">
           <textarea
-                  ref="content"
-                  placeholder="在此键入以创建新的便笺"
+                  ref="noteContent"
+                  placeholder="在此输入以创建新的便笺"
                   v-model="noteContent"
                   @input="contentChange"
           ></textarea>
         </div>
+        <!--便笺列表-->
         <NoteList/>
       </div>
     </div>
@@ -41,8 +44,8 @@ export default {
       get() {
         return this.$store.state.noteContent;
       },
-      set(v) {
-        this.$store.state.noteContent = v;
+      set(value) {
+        this.UpdateNoteContent(value);
       }
     }
   },
@@ -53,19 +56,18 @@ export default {
       debounce(() => {
         const list = this.noteList;
         const index = this.noteContentIndex;
-        console.log(index);
         if (index !== '') {
           list[index].title = this.noteContent;
           this.UpdateNoteList(list);
         } else {
-          // list.push({
-          //   title: this.noteContent,
-          //   time: this.getTime(),
-          //   pin: false
-          // });
-          // this.UpdateNoteList(list).then(() => {
-          //   this.UpdateNoteContentIndex(this.noteList.length - 1);
-          // });
+          list.push({
+            title: this.noteContent,
+            time: this.getTime(),
+            pin: false
+          });
+          this.UpdateNoteList(list).then(() => {
+            this.UpdateNoteContentIndex(this.noteList.length - 1);
+          });
         }
       });
     },
